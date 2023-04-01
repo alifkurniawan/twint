@@ -4,27 +4,24 @@ import time
 import requests
 import logging as logme
 
-
 class TokenExpiryException(Exception):
     def __init__(self, msg):
         super().__init__(msg)
 
-
+        
 class RefreshTokenException(Exception):
     def __init__(self, msg):
         super().__init__(msg)
-
+        
 
 class Token:
     def __init__(self, config):
         self._session = requests.Session()
-        self._session.headers.update(
-            {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101 Firefox/78.0'})
+        self._session.headers.update({'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101 Firefox/78.0'})
         self.config = config
         self._retries = 5
         self._timeout = 10
-        self._session.headers.update({
-                                         'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA'})
+        self._session.headers.update({'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA'})
         self.url = 'https://api.twitter.com/1.1/guest/activate.json'
 
     def _request(self):
