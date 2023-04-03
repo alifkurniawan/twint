@@ -114,15 +114,7 @@ def Tweet(Tweet, config):
         j_data["_source"].update({"trans_src": Tweet.trans_src})
         j_data["_source"].update({"trans_dest": Tweet.trans_dest})
 
-    actions.append(j_data)
-
-    # es = Elasticsearch(config.Elasticsearch, verify_certs=config.Skip_certs)
-    # if not _index_tweet_status:
-    #     _index_tweet_status = createIndex(config, es, scope="tweet")
-    # with nostdout():
-    #     helpers.bulk(es, actions, chunk_size=2000, request_timeout=200)
-    # actions = []
-
+    actions.append(j_data["_source"])
     client = MongoClient(config.MongoDBurl)
     db = client[config.MongoDBdb]
     collection = db[config.MongoDBcollection]

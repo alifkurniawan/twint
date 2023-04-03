@@ -112,7 +112,6 @@ async def RequestUrl(config, init):
     params = []
     _url = ""
     _headers = [("authorization", config.Bearer_token), ("x-guest-token", config.Guest_token)]
-
     # TODO : do this later
     if config.Profile:
         logme.debug(__name__ + ':RequestUrl:Profile')
