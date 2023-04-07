@@ -119,5 +119,6 @@ def Tweet(tweet, config):
     client = MongoClient(config.MongoDBurl)
     db = client[config.MongoDBdb]
     collection = db[config.MongoDBcollection]
-    collection.with_options(write_concern=WriteConcern(w=0)).update_one({"_id": tweet["_id"]}, {"$set": tweet}, True)
+    d = tweet.__dict__
+    collection.with_options(write_concern=WriteConcern(w=0)).update_one({"_id": d["_id"]}, {"$set": d}, True)
     client.close()
