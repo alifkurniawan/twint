@@ -79,6 +79,7 @@ def Tweet(tw, config):
     logme.debug(__name__ + ':Tweet')
     t = tweet()
     t.id = int(tw['id_str'])
+    t._id = int(tw['id_str'])
     t.id_str = tw["id_str"]
     t.conversation_id = tw["conversation_id_str"]
 
