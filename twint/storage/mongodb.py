@@ -115,10 +115,9 @@ def Tweet(tweet, config):
     #     j_data["_source"].update({"translate": Tweet.translate})
     #     j_data["_source"].update({"trans_src": Tweet.trans_src})
     #     j_data["_source"].update({"trans_dest": Tweet.trans_dest})
-    actions = []
-    actions.append(tweet)
+
     client = MongoClient(config.MongoDBurl)
     db = client[config.MongoDBdb]
     collection = db[config.MongoDBcollection]
-    collection.with_options(write_concern=WriteConcern(w=0)).update_one({"_id": d["_id"]}, {"$set": d}, True)
+    collection.with_options(write_concern=WriteConcern(w=0)).update_one({"_id": tweet["_id"]}, {"$set": tweet}, True)
     client.close()
