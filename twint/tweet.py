@@ -89,6 +89,7 @@ def Tweet(tw, config):
     t.datetime = str(_dt.strftime(Tweet_formats['datetime']))
     # date is of the format year,
     t.datestamp = _dt.strftime(Tweet_formats['datestamp'])
+    t.date = _dt.strftime(Tweet_formats['datestamp'])
     t.timestamp = _dt.strftime(Tweet_formats['timestamp'])
     t.user_id = int(tw["user_id_str"])
     t.user_id_str = tw["user_id_str"]
